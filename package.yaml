@@ -1,0 +1,53 @@
+name:                breaking-scr
+version:             0.1.0.0
+github:              "paasim/breaking-scr"
+license:             BSD3
+author:              "Markus Paasiniemi"
+maintainer:          "paasim@iki.fi"
+copyright:           "Copyright (c) 2018 Markus Paasiniemi"
+
+extra-source-files:
+- README.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on Github at <https://github.com/paasim/breaking-scr#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- bytestring
+- http-conduit
+- sqlite-simple
+- tagsoup
+- time
+- utf8-string
+
+library:
+  source-dirs: src
+
+executables:
+  breaking-scr-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - breaking-scr
+
+tests:
+  breaking-scr-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - breaking-scr
